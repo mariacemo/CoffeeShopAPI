@@ -13,7 +13,7 @@ paths:
       description: Adding name and number to subscribe
       operationId: addMember
       requestBody:
-        description: write name and phone number to subscribe to rewards       program 
+        description: write name and phone number to subscribe to rewards program 
         content:
             schema:
               $ref: 'rewards/{id, phone number}'
@@ -38,8 +38,6 @@ paths:
       operationId: addDrink
       requestBody:
         description: adding a drink to cart
-        content:
-          
         required: true
       responses:
         '200':
