@@ -1,0 +1,74 @@
+openapi: 3.0.3
+info:
+  title: Cami's Coffee Shop - OpenAPI 3.0
+  description:  Cami's Coffee Shop API
+
+ 
+paths:
+  /rewards:
+    post:
+      tags:
+        - rewards program
+      summary: Sign up to rewards program
+      description: Adding name and number to subscribe
+      operationId: addMember
+      requestBody:
+        description: write name and phone number to subscribe to rewards       program 
+        content:
+            schema:
+              $ref: 'rewards/{id, phone number}'
+        required: true
+      responses:
+        '200':
+          description:  Thank you for joining our rewards program! A 10% discount code will be sent to the number provided.      
+           
+        '400':
+          description: Invalid phone number supplied. Unable to create account
+         
+                  
+  /menu/add:
+    get:
+      tags:
+        - menu
+      summary: Adding a coffee to the order
+      parameters:
+        - in: path
+          name: coffeeID   
+          description: Drink name
+      operationId: addDrink
+      requestBody:
+        description: adding a drink to cart
+        content:
+          
+        required: true
+      responses:
+        '200':
+            description: coffeeName added to order
+  
+        '404':
+          description: Item does not exist
+          
+     
+  /menu/remove:
+    delete:
+      tags:
+        - order
+      summary: Deleting items from the menu
+      parameters:
+         name: coffeeID
+         in: path
+      description: The design team will be able to delete items from the menu 
+      
+      operationId: deleteItem
+      required: false
+      responses:
+        '200':
+          description: Succesfully deleted from menu
+                   
+        '404':
+          description: Menu item does not exist 
+          
+        '400':
+          description: Invalid input. Inserted number instead of name
+             
+ 
